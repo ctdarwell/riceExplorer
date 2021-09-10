@@ -43,4 +43,5 @@ The program must first evaluate the genomic variation encoded within downloaded 
 16. VARIABLE: `loc_col` - Annotated gene names column number in [2] (e.g. `loc_col=2`)
 17. VARIABLE: `first` - Column number of first base positions in [2] (e.g. `first=4`)
 18. VARIABLE: `end` - Column number of last base positions in [2] (e.g. `first=5`)
+19. VARIABLE: ``nChroms=12` - No. of chromosomes for the organism
 
