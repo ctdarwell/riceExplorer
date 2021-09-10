@@ -32,6 +32,15 @@ The program must first evaluate the genomic variation encoded within downloaded 
 5. VARIABLE: `data` - filename containing trait data for each panel *.gvcf* file sample (MUST have column name *acc* & *trait* for accession and phenotypic value)
 6. VARIABLE: `accs` - filename of list containing examined samples (MUST have columns "acc" AND "type" - includes accession type: e.g. 'RGD improved line' vs. 'Landrace')
 7. VARIABLE: `idd_genes` - filename of list of genes known to have functional impact on relevant phenotype; NO header, NB put NA if know information is available 
-8. VARIABLE: all_msu - filename of same format as `genes` - may often be same file; required in conjunction with `idd_genes` to annotate those genes on graphical output
-9. VARIABLE: gene_id - this is a search term used by the program to identify files assocaited with each gene; e.g. the Michigan State University annotation of the Nipponbare rice genome uses [WHAT?] notation for genes, such as: *LOC_Os01g02700*. It is intended that gene notation follows a similar scheme. Here there is a repeatable suffix ("*LOC_Os*") preceding every chromososme number
+8. VARIABLE: `all_msu` - filename of same format as `genes` - may often be same file; required in conjunction with `idd_genes` to annotate those genes on graphical output
+9. VARIABLE: `gene_id` - this is a search term used by the program to identify files assocaited with each gene; e.g. the Michigan State University annotation of the Nipponbare rice genome uses [WHAT?] notation for genes, such as: *LOC_Os01g02700*. It is intended that gene notation follows a similar scheme. Here there is a repeatable suffix ("*LOC_Os*") preceding every chromososme number which are then followed by a letter *g* that delimits the number of the gene; for such MSU genes we use: `gene_id=LOC_Os`
+10. VARIABLE: `db_id` - a search term repressenting the suffix given to all global database *.gvcf* files (e.g. `db_id=IRIS`)
+11. VARIABLE: `focal` - a search term repressenting the suffix given to all local accession *.gvcf* files
+12. VARIABLE: `fig1` - the names of non-focal variety (NFVs) types (as listed under variable in [6]). This MUST be added with spaces between words WITHIN names and underscores BETWEEN names (e.g. `fig1="RD_variety,Landrace"`)
+13. VARIABLE: `fig2` - the names of elite cultivar (ECs) variety types. Same as [12]: (e.g. `fig1="RGD_improved_line"`)
+14. VARIABLE: `db` - databse called in `snpEff`. e.g. `db=Oryza_sativa`
+15. VARIABLE: `chrom` - Chromosomes column number in [2] (e.g. `chrom=1`)
+16. VARIABLE: `loc_col` - Annotated gene names column number in [2] (e.g. `loc_col=2`)
+17. VARIABLE: `first` - Column number of first base positions in [2] (e.g. `first=4`)
+18. VARIABLE: `end` - Column number of last base positions in [2] (e.g. `first=5`)
 
