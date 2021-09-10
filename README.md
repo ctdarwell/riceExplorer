@@ -8,7 +8,21 @@ This resource comprises several Python3 programs that integrate via a ***Bash***
 
 **Preliminary setup**
 
-The program must first evaluate the genomic variation encoded within downloaded files from a global (or other repository) database. For rice (*Oryza sativa*), the IRRI database hosts 3000+ whole-genome sequenced accessions that may be freely downloaded. A first step is to decide which samples to investigate that offer represent global diversity. For this we provide the auxilliary Python script *sampleSelector.py* that takes a table of accessions, their varietal type (for rice this includes *indica*, *japonica* etc), the geographic origin, and their associated phenotype for the trait of interest. *sampleSelector.py* then outputs a list of accessions that includes the largest and smallest phenotypic value for each varietal type for each global region. From this, representative accessions of the global panel should include the widest spread of phenotypic and genotypic diversity. After this process the full program is ready to run. It should be noted that no phenotypuc data is necessary for the local panel (i.e. accessions under investigation by a breeding program team).
+The program must first evaluate the genomic variation encoded within downloaded files from a global (or other repository) database. For rice (*Oryza sativa*), the IRRI database hosts 3000+ whole-genome sequenced accessions that may be freely downloaded. A first step is to decide which samples to investigate that offer represent global diversity. For this we provide the auxilliary Python script *sampleSelector.py* that takes a table of accessions, their varietal type (for rice this includes *indica*, *japonica* etc), the geographic origin, and their associated phenotype for the trait of interest. *sampleSelector.py* then outputs a list of accessions that includes the largest and smallest phenotypic value for each varietal type for each global region. From this, representative accessions of the global panel should include the widest spread of phenotypic and genotypic diversity. After this process the full program is ready to run. It should be noted that no phenotypic data is necessary for the local panel (i.e. accessions under investigation by a breeding program team).
+
+ **MAIN WORK-FLOW**
+1. PYTHON evaluates global database to select accessions of interest (*sampleSelector.py*)
+2. BCFTOOLS records all SNPs from selected IRRI accessions 
+3. PYTHON formats files for SNPEFF and records which SNP are associated with which IRRI accession (*vcf4snpEffLoop.py*)
+4. SNPEFF evaluates functional importance of SNPs (inc BASH filtering)
+5. PYTHON outputs significant SNPs (of extreme values) with associated IRRI accessions (*hapXphenoPredictorSNPsLoop.py*)
+6. BCFTOOLS records all SNPs from selected RGD accessions
+7. PYTHON formats files (as for SNPEFF) (*vcf4snpEffLoop.py*)
+8. PYTHON outputs SNPs coding extreme phenotypes in global data (e.g. hi or lo) that are present ONLY in NFVs and also outputs all identified extreme haplotypes (*potential_rgd_sourcesLoop.py*)
+9. PYTHON makes graphs of selected NFVs vs. ECs (*pipelineGraphOut.py*)
+10. Makes summary table of all accessions with extreme haplos and a counts X accession table (*pipeline_summary.py*)
+
+
 
 
 
