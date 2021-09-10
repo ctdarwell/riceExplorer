@@ -30,7 +30,7 @@ The program must first evaluate the genomic variation encoded within downloaded 
 3. VARIABLE: `rgd` - filename containing paths of all local panel *.gvcf* files
 4. VARIABLE: `samps` - filename containing paths of all global panel *.gvcf* files
 5. VARIABLE: `data` - filename containing trait data for each panel *.gvcf* file sample (MUST have column name "acc" & "trait" for accession and phenotypic value)
-6. VARIABLE: `accs` - filename of list containing examined samples (MUST have columns "acc" AND "type" - includes accession type: e.g. 'RGD improved line' vs. 'Landrace')
+6. VARIABLE: `accs` - filename of list containing examined samples (MUST have columns "acc" AND "type" - includes accession type: e.g. 'Landrace', 'Dept variety')
 7. VARIABLE: `idd_genes` - filename of list of genes known to have functional impact on relevant phenotype; NO header, NB put NA if know information is available 
 8. VARIABLE: `all_msu` - filename of same format as `genes` - may often be same file; required in conjunction with `idd_genes` to annotate those genes on graphical output
 9. VARIABLE: `gene_id` - this is a search term used by the program to identify files assocaited with each gene; e.g. the Michigan State University annotation of the Nipponbare rice genome uses [WHAT?] notation for genes, such as: *LOC_Os01g02700*. It is intended that gene notation follows a similar scheme. Here there is a repeatable suffix ("*LOC_Os*") preceding every chromososme number which are then followed by a letter *g* that delimits the number of the gene; for such MSU genes we use: `gene_id=LOC_Os`
