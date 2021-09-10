@@ -23,10 +23,10 @@ The program must first evaluate the genomic variation encoded within downloaded 
 10. PYTHON makes summary table of all accessions with extreme haplos and a counts X accession table (*pipeline_summary.py*)
 
 
-**Variable values required for *pllWorkflowLoop.bash***
+**Variable values required for *pllWorkflowLoop.bash***. While care must be taken for the program to run, this is all straightforward, non-technical information.
 
 1. VARIABLE: `fldr` - input a folder name that will be created by the program to output results and conduct analyses
-2. VARIABLE: `genes` - filename containing names of all genes (gene regions) to be investigated including columns indicating chromosome numbers, gene annotation names, start and end base positions to be examined
+2. VARIABLE: `genes` - filename containing names of all genes (gene regions) to be investigated including columns indicating chromosome numbers, gene annotation names, start and end base positions to be examined. Following Michigan State University format: [WEBPAGES]
 3. VARIABLE: `rgd` - filename containing paths of all local panel *.gvcf* files
 4. VARIABLE: `samps` - filename containing paths of all global panel *.gvcf* files
 5. VARIABLE: `data` - filename containing trait data for each panel *.gvcf* file sample (MUST have column name *acc* & *trait* for accession and phenotypic value)
