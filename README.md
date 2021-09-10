@@ -8,4 +8,10 @@ This resource comprises several Python3 programs that integrate via a ***Bash***
 
 **Preliminary setup**
 
-The program must first evaluate the genomic variation encoded within downloaded files from a global (or other repository) database. For rice (*Oryza sativa*), the IRRI database hosts 3000+ whole-genome sequenced accessions that may be freely downloaded. A first step is to 
+The program must first evaluate the genomic variation encoded within downloaded files from a global (or other repository) database. For rice (*Oryza sativa*), the IRRI database hosts 3000+ whole-genome sequenced accessions that may be freely downloaded. A first step is to decide which samples to investigate that offer represent global diversity. For this we provide the auxilliary Python script *sampleSelector.py* that takes a table of accessions, their varietal type (for rice this includes *indica*, *japonica* etc), the geographic origin, and their associated phenotype for the trait of interest. *sampleSelector.py* then outputs a list of accessions that includes the largest and smallest phenotypic value for each varietal type for each global region. From this, representative accessions of the global panel should include the widest spread of phenotypic and genotypic diversity. After this process the full program is ready to run. It should be noted that no phenotypuc data is necessary for the local panel (i.e. accessions under investigation by a breeding program team).
+
+
+
+
+
+
