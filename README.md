@@ -36,8 +36,8 @@ The program must first evaluate the genomic variation encoded within downloaded 
 9. VARIABLE: `gene_id` - this is a search term used by the program to identify files assocaited with each gene; e.g. the Michigan State University annotation of the Nipponbare rice genome uses [WHAT?] notation for genes, such as: *LOC_Os01g02700*. It is intended that gene notation follows a similar scheme. Here there is a repeatable suffix ("*LOC_Os*") preceding every chromososme number which are then followed by a letter *g* that delimits the number of the gene; for such MSU genes we use: `gene_id=LOC_Os`
 10. VARIABLE: `db_id` - a search term repressenting the suffix given to all global database *.gvcf* files (e.g. `db_id=IRIS`)
 11. VARIABLE: `focal` - a search term repressenting the suffix given to all local accession *.gvcf* files
-12. VARIABLE: `fig1` - the names of non-focal variety (NFVs) types (as listed under variable in [6]). This **MUST** be added with commas between words **WITHIN** names and underscores **BETWEEN** names (e.g. `fig1="RD_variety,Landrace"`) - i.e. there **MUST** be no spaces.
-13. VARIABLE: `fig2` - the names of elite cultivar (ECs) variety types. Same as [12]: (e.g. `fig1="RGD_improved_line"`) - again, commas, underscores and **NO** spaces
+12. VARIABLE: `fig1` - the names of non-focal variety (NFVs) types (as listed under variable in [6]). This **MUST** use quotes and feature commas between words **WITHIN** names and underscores **BETWEEN** names (e.g. `fig1="RD_variety,Landrace"`) - i.e. there **MUST** be no spaces.
+13. VARIABLE: `fig2` - the names of elite cultivar (ECs) variety types. Same as [12]: (e.g. `fig1="RGD_improved_line"`) - again, quotes, commas, underscores and **NO** spaces
 14. VARIABLE: `db` - databse called in `snpEff`. e.g. `db=Oryza_sativa`
 15. VARIABLE: `chrom` - Chromosomes column number in [2] (e.g. `chrom=1`)
 16. VARIABLE: `loc_col` - Annotated gene names column number in [2] (e.g. `loc_col=2`)
