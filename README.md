@@ -29,7 +29,7 @@ The program must first evaluate the genomic variation encoded within downloaded 
 2. VARIABLE: `genes` - filename containing names of all genes (gene regions) to be investigated including columns indicating chromosome numbers, gene annotation names, start and end base positions to be examined. Following Michigan State University format: [WEBPAGES]
 3. VARIABLE: `rgd` - filename containing paths of all local panel *.gvcf* files
 4. VARIABLE: `samps` - filename containing paths of all global panel *.gvcf* files
-5. VARIABLE: `data` - filename containing trait data for each panel *.gvcf* file sample (MUST have column name *acc* & *trait* for accession and phenotypic value)
+5. VARIABLE: `data` - filename containing trait data for each panel *.gvcf* file sample (MUST have column name "acc" & "trait" for accession and phenotypic value)
 6. VARIABLE: `accs` - filename of list containing examined samples (MUST have columns "acc" AND "type" - includes accession type: e.g. 'RGD improved line' vs. 'Landrace')
 7. VARIABLE: `idd_genes` - filename of list of genes known to have functional impact on relevant phenotype; NO header, NB put NA if know information is available 
 8. VARIABLE: `all_msu` - filename of same format as `genes` - may often be same file; required in conjunction with `idd_genes` to annotate those genes on graphical output
