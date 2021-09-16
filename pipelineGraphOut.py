@@ -110,7 +110,7 @@ def main():
 
 #MODIFIED TO MARK ANY KNOWN GENES WITH ANY FROM ANAL [COULD MOFIFY COLOUR ON OUTPUT]
 def mkGene(im, start_end, h, h2, l, chrom):
-    tmp = [(0,0,255)] # (0, 255, 255), (0, 128, 255), (0, 127, 0), (255, 100, 100), (140, 140, 140)]
+    tmp = [(0,0,255), (0, 255, 255), (0, 128, 255), (0, 127, 0), (255, 100, 100), (140, 140, 140)] #colours
     cnt, step = 0, 0
     for gene in gene_list.index:
         try:
