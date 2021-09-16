@@ -39,7 +39,7 @@ def main():
 
     for chrom in sorted(set(chroms)):
         #mk blank img + chrom
-        im = np.full((3600, 3600, 3), 255, dtype=np.int16) #full white rectangle #ALT!!!!!!!!!!!!!
+        im = np.full((3600, 3600, 3), 255, dtype=np.int16) #full white rectangle
         h, l = [int((im.shape[0]/3) - 50), int((im.shape[0]/3) + 50)], [int(im.shape[1]/s), int(im.shape[1] - (im.shape[1]/(s / rh_margin)))]
         im[h[0]:h[1], l[0]:l[1], 1:3] = 0 #colour bar
         for p in range(1, 26): im[h[0] + p:h[1] - p, l[0] - p:l[1] + p, 1:3] = 0 #colour bar ends
