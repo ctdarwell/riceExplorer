@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH --cpus-per-task=24
 
-#The next line should be altered to specifically identify that versions of SAMtools and BCFtools you are using
-module load SAMtools BCFtools
+#The next line should be altered to specifically identify that versions of BCFtools you are using
+module load BCFtools
 
 source riceExplorer_vars #input parameters file
 rgd=$(cat $paths)
