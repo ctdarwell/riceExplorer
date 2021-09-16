@@ -5,7 +5,7 @@ import itertools
 from scipy import ndimage
 
 #main params
-wdir = sys.argv[1] #eg 'fullChromAnal'
+wdir = sys.argv[1] #eg 'GL'
 MSU = sys.argv[2] # eg 'msu_ver7_simple.csv' 
 GENE_LIST = sys.argv[3] # #eg msu_GL.csv
 sign = sys.argv[4] #'LOC_Os' # 
