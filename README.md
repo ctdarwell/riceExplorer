@@ -46,6 +46,7 @@ ADDITIONAL: it should be noted that running steps 2-5 on a local panel (i.e. of 
 18. VARIABLE: `end` - Column number of last base positions in [2] (e.g. `first=5`)
 19. VARIABLE: ``nChroms=12` - No. of chromosomes for the organism
 
+To run the workflow you should type: `./riceExplorer.bash` in a Linux terminal. Preferably, you should run it through your system job loader (e.g., slurm) - the full rice analysis will take 2-3 days on a HPC.
 
 **Note on stand-alone use of *pipelineGraphOut.py***
 
