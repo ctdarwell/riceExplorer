@@ -1,11 +1,16 @@
 import pandas as pd, sys
 
-file = sys.argv[1]
+file = sys.argv[1] #main sample file
 dat = pd.read_csv(file, header=0) #all IRRI samps w this trait
 
-try:
+try: #remove any countries not wanted to be considered [optional]
     excl = sys.argv[2].replace('_', ' ').split(',')
     dat = dat[~dat.country.isin(excl)]
+except: pass
+
+try: #remove any individual samples not wanted to be considered [optional]
+    tbr = pd.read_csv(sys.argv[3], header=0)
+    dat = dat[~dat.acc.isin(tbr.acc.tolist())]
 except: pass
 
 df = pd.DataFrame()
