@@ -107,12 +107,11 @@ def main():
         im = writeText(im, (3000, 2950), 4, 'black', cv2.FONT_HERSHEY_PLAIN, "EVs: Low-value")
         im = writeText(im, (3000, 3050), 4, 'black', cv2.FONT_HERSHEY_PLAIN, "genotypes")
 
-        #cv2.imwrite(f"{wdir}/{prfx[3:]}Chrom{chrom}_potential_donors.png", im)
-        #https://stackoverflow.com/questions/10965417/how-to-convert-a-numpy-array-to-pil-image-applying-matplotlib-colormap
+        #convert numpy-array to pil-image applying matplotlib colormap
         PIL_image = Image.fromarray(np.uint8(im)).convert('RGB')
         PIL_image.save(f"{wdir}/{prfx[3:]}Chrom{chrom}_potential_donors.jpg", dpi=(450,450))
 
-#MODIFIED TO MARK ANY KNOWN GENES WITH ANY FROM ANAL [COULD MOFIFY COLOUR ON OUTPUT]
+#MODIFIED TO MARK ANY KNOWN GENES WITH ANY FROM ANALYSIS
 def mkGene(im, start_end, h, h2, l, chrom):
     tmp = [(255, 140, 0), (0, 150, 255), (0, 255, 255), (135, 206, 235), (0, 0, 128), (0, 139, 139), (70, 130, 180), (0, 90, 156), (0, 128, 255), (0, 127, 0), (255, 100, 100), (140, 140, 140)]
     cnt, step = 0, 0
