@@ -36,7 +36,7 @@ ADDITIONAL: it should be noted that running steps 2-5 on a local panel (i.e. of 
 2. VARIABLE: `genes` - name of file containing names of all genes (gene regions) to be investigated including columns indicating chromosome numbers, gene annotation names, start and end base positions to be examined. **NB** remove column headers [see "msu_115testGenes.csv" in *dataFiles.zip*]
 3. VARIABLE: `rgd` - name of file containing paths of all local panel *.gvcf* files [see "rgdSampPaths.csv" in *dataFiles.zip*]
 4. VARIABLE: `samps` - name of file containing paths of all global panel *.gvcf* files [see "irri200_GL_paths.csv" in *dataFiles.zip*]
-5. VARIABLE: `data` - name of file containing trait data for each *.gvcf* file sample (MUST have column name "acc" & "trait" for accession and phenotypic value) [see "irri100_GL_data.csv" in *dataFiles.zip*]
+5. VARIABLE: `data` - name of file containing trait data for each *.gvcf* file sample (MUST have column name "acc" & "trait" for accession and phenotypic value) [see "irri200_GL_data.csv" in *dataFiles.zip*]
 6. VARIABLE: `accs` - name of file of list containing examined samples (MUST have columns "acc" AND "type" - includes accession type: e.g. 'Landrace', 'Dept variety') [see "Rice_accession_full_list.csv" in *dataFiles.zip*]
 7. VARIABLE: `idd_genes` - name of file of list of genes known to have functional impact on relevant phenotype; NO header, NB put NA if know information is available [see "msu_GL.csv" in *dataFiles.zip*]
 8. VARIABLE: `all_msu` - name of file of same format as `genes` - may often be same file; required in conjunction with `idd_genes` to annotate those genes on graphical output [see "msu_115testGenes.csv" in *dataFiles.zip*]
