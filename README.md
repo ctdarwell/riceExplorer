@@ -1,16 +1,20 @@
 # riceExplorer
 
+If you need assistance: ctdarwell@gmail.com (Clive)
 This is a Linux/Bash workflow to to identify haplotype reservoirs among a genomic rice panel (or other organism). The workflow depends on BCFtools, snpEff and Python3 installed to your Linux environement. You are required to download *.gvcf* files from a global database (e.g. rice; IRRI: http://iric.irri.org/resources/3000-genomes-project; aka 3KRG) representing global genetic and phenotypic diversity of the study organism. You require associated trait data for the files downloaded from the global database for your trait of interest. You then require a local genomic panel of accessions (*.gvcf*) that you want to mine for potentially beneficial SNPs/haplotypes that corellate with extreme phenotypes from the database. The pipeline initially identifies and clusters functional haplotypes of genome-wide gene regions from the global database and then calculates  phenotypic associations and evaluates whether they are above or below user-inputted quantile ranges. Subsequently, the pipeline searches your local genomic database to recognise if identified markers are found only among selected non-focal varieties (NFVs) versus elite cultivars (ECs). The basic premise is that most agricultural breeding programmes focus on ECs (which over time may may accumulate deleterious alleles) and may come to neglect potential contributions of other accessions held by the research body. It represents a fully automated bioinformatics pipeline that can easily integrate local breeding program sequence data with international database resources, without relying on any (costly, time-consuming) phenotypic experimental procedure. The intended result is that identified loci may serve as genetic donors to the development panel. **riceExplorer** can automatically conduct a full genome analysis and produces annotated graphical output of chromosomal maps, potential global diversity sources, and summary tables.
 
 **Dependencies**
 
 This resource comprises several Python3 programs that integrate via a ***Bash*** script with freely-available bioinformatics software in the public domain. In order to run it must be able to call both the **Bcftools** (https://samtools.github.io/bcftools/) and **snpEff** (http://pcingola.github.io/SnpEff/) program suites in a Linux environment. Additionally, you must set several parameters (data file names and other details) at the start of the Bash script so that the program may proceed.
+PYTHON libraries required: pandas, numpy, PIL, scipy, seaborn, matplotlib, cv2 (normally: `pip install <library> --user`) on your HPC terminal
+OPTIONALLY (though recommended) you must utilise R (normally found on HPC distributions). R libraries **LDheatmap** and **snpStats** must be installed.
+OPTIONALLY you may download and install the software sNMF (http://membres-timc.imag.fr/Olivier.Francois/snmf/contact.htm) in you work folder for the full program to work although the pipeline will still perform phylogenetic, LD and site-frequency analyses without it.
 
 **Preliminary setup**
 
 The program must first evaluate the genomic variation encoded within downloaded files from a global (or other repository) database. For rice (*Oryza sativa*), the IRRI database hosts 3000+ whole-genome sequenced accessions that may be freely downloaded. A first step is to decide which samples to investigate that represent global diversity. For this we provide the auxilliary Python script *sampleSelector.py* (see below) that takes a table of accessions, their varietal type (for rice this includes *indica*, *japonica* etc), the geographic origin, and their associated phenotype for the trait of interest. *sampleSelector.py* then outputs a list of accessions that includes the largest and smallest phenotypic value for each varietal type for each global region. From this, representative accessions of the global panel should include the widest spread of phenotypic and genotypic diversity. After this process the full program is ready to run. It should be noted that no phenotypic data is necessary for the local panel (i.e. accessions under investigation by a breeding program team). Additionally, while SNPs from both panels should be called against the same reference genome (e.g. for rice, Nipponbare), there should also be consistent naming of chromosomes across panels. For example, a reference genome may have chromosomes referred to as either *>Chr01* or *>1* (i.e. in a fasta formatted file) - care should be taken that subsequent *GVCF* files used by **riceExplorer** have consistent chromosome calling.
 
- **MAIN WORK-FLOW**
+**MAIN WORK-FLOW**
 1. PYTHON evaluates global database to select accessions of interest (*sampleSelector.py*)
 2. BCFTOOLS records all SNPs from selected global database accessions 
 3. PYTHON formats files for SNPEFF and records which SNP are associated with which global database accession (*vcf4snpEffLoop.py*)
@@ -29,7 +33,7 @@ ADDITIONAL: it should be noted that running steps 2-5 on a local panel (i.e. of 
 1. VARIABLE: `fldr` - input a folder name that will be created by the program to output results and conduct analyses
 2. VARIABLE: `genes` - name of file containing names of all genes (gene regions) to be investigated including columns indicating chromosome numbers, gene annotation names, start and end base positions to be examined. **NB** remove column headers [see "msu_115testGenes.csv" in *dataFiles.zip*]
 3. VARIABLE: `rgd` - name of file containing paths of all local panel *.gvcf* files [see "rgdSampPaths.csv" in *dataFiles.zip*]
-4. VARIABLE: `samps` - name of file containing paths of all global panel *.gvcf* files [see "irri100_GL_paths.csv" in *dataFiles.zip*]
+4. VARIABLE: `samps` - name of file containing paths of all global panel *.gvcf* files [see "irri200_GL_paths.csv" in *dataFiles.zip*]
 5. VARIABLE: `data` - name of file containing trait data for each *.gvcf* file sample (MUST have column name "acc" & "trait" for accession and phenotypic value) [see "irri100_GL_data.csv" in *dataFiles.zip*]
 6. VARIABLE: `accs` - name of file of list containing examined samples (MUST have columns "acc" AND "type" - includes accession type: e.g. 'Landrace', 'Dept variety') [see "Rice_accession_full_list.csv" in *dataFiles.zip*]
 7. VARIABLE: `idd_genes` - name of file of list of genes known to have functional impact on relevant phenotype; NO header, NB put NA if know information is available [see "msu_GL.csv" in *dataFiles.zip*]
@@ -39,14 +43,37 @@ ADDITIONAL: it should be noted that running steps 2-5 on a local panel (i.e. of 
 11. VARIABLE: `focal` - a search term repressenting the suffix given to all local accession *.gvcf* files (e.g., all samples begin with "W00" for our data)
 12. VARIABLE: `fig1` - the names of non-focal variety (NFVs) types (as listed under variable in [6]). This **MUST** use quotes and feature commas between words **WITHIN** names and underscores **BETWEEN** names (e.g. `fig1="RD_variety,Landrace"`) - i.e. there **MUST** be no spaces.
 13. VARIABLE: `fig2` - the names of elite cultivar (ECs) variety types. Same as [12]: (e.g. `fig1="RGD_improved_line"`) - again, quotes, commas, underscores and **NO** spaces
-14. VARIABLE: `db` - databse called in `snpEff`. e.g. `db=Oryza_sativa`
+14. VARIABLE: `db` - database called in `snpEff`. e.g. `db=Oryza_sativa`
 15. VARIABLE: `chrom` - Chromosomes column number in [2] (e.g. `chrom=1`)
 16. VARIABLE: `loc_col` - Annotated gene names column number in [2] (e.g. `loc_col=2`)
 17. VARIABLE: `first` - Column number of first base positions in [2] (e.g. `first=4`)
-18. VARIABLE: `end` - Column number of last base positions in [2] (e.g. `first=5`)
-19. VARIABLE: ``nChroms=12` - No. of chromosomes for the organism
+18. VARIABLE: `end` - Column number of last base positions in [2] (e.g. `end=5`)
+19. VARIABLE: `nChroms` - No. of chromosomes for the organism (e.g. `nChroms=12` 
+20. VARIABLE: `thresh` - NB Two input options (e.g. `thresh=0.866`: 1. A percentile value - thresh=0.975 gives 5% confidence intervals; thresh=0.866 gives percentiles at 1.5 standard deviations; 2. lower and upper absolute values SEPERATED by a comma - e.g. a lower value of 7 and upper value 10 should be written as: thresh=7,10)  
+21. VARIABLE: `font1` - Header font - on HPC look in directory '/usr/share/fonts/' for available fonts (e.g. `font1=FreeSansBold.ttf`)
+22. VARIABLE: `font2` - minor font - on HPC look in directory '/usr/share/fonts/' for available fonts (e.g. `font2=FreeSans.ttf`)
+23. VARIABLE: `LDtypes` - search term in pops files; searches for samples names used in calculating LD (e.g. `LDtypes=IND`) - searches for indica samples in our data (IND_IRRI or IND_RGD) - see below in `riceExplorer_aux.bash`
+
 
 To run the workflow you should type: `./riceExplorer.bash` in a Linux terminal. Or, preferably you should run it through your system job loader (e.g., slurm) - the full rice analysis will take 2-3 days on a HPC. NB line 5 in the bash script (*riceExplorer.bash*) will need altering to account for the versions of BCFtools you are using. 
+
+**Auxiliary analyses**
+After running `riceExplorer.bash`, you may then run `riceExplorer_aux.bash`. It also uses `riceExplorer_VARS` so there is no need to reconfigure any data files. 
+It will perform numerous diversity analyses (see paper)
+NB you **must** include a file called **pops.csv** with header columns: **samps** and **population**. The **population** column should consider variable #23 `LDtypes`. For example, in our data we have indica samples from two panels. They are coded as "IND_IRRI" or "IND_RGD" - we can use `LDtypes=IND` to search for both (Please ensure the term does not feature in any sample names)
+
+**AUXILIARY WORK-FLOW**
+1. BASH evaluates high quality/good coverage SNPs
+2. BCFTOOLS calls SNPs, creates VCF files
+3. PYTHON tidies up VCF files
+4. PYTHON converts VCFs to Fasta format
+5. PYTHON performs phylogenetic analyses and creates tree file
+6. PYTHON creates SNAPP and DIYABC input files
+7. PYTHON generates site-frequency spectrum graphical output
+8. R calculates LD relationships
+9. PYTHON generates annotated LD figures
+10. sNMF perform population genomic analyses
+
 
 **Note on use of *sampleSelector.py***
 
