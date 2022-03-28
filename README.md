@@ -72,7 +72,8 @@ NB you **must** include a file called **pops.csv** with header columns: **samps*
 7. PYTHON generates site-frequency spectrum graphical output
 8. R calculates LD relationships
 9. PYTHON generates annotated LD figures
-10. sNMF perform population genomic analyses
+10. PYTHON generates LD tables
+11. sNMF perform population genomic analyses
 
 
 **Note on use of *sampleSelector.py***
