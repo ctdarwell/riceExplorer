@@ -60,7 +60,7 @@ ADDITIONAL: it should be noted that running steps 2-5 on a local panel (i.e. of 
 To run the workflow you should type: `./riceExplorer.bash` in a Linux terminal. Or, preferably you should run it through your system job loader (e.g., slurm) - the full rice analysis will take 2-3 days on a HPC. NB line 5 in the bash script (*riceExplorer.bash*) will need altering to account for the versions of BCFtools you are using. 
 
 **Auxiliary analyses**
-After running `riceExplorer.bash`, you may then run `riceExplorer_aux.bash`. It also uses `riceExplorer_VARS` so there is no need to reconfigure any data files. 
+After running `riceExplorer.bash`, you may then run `riceExplorer_aux.bash`. It also uses `riceExplorer_vars` so there is no need to reconfigure any data files. 
 It will perform numerous diversity analyses (see paper)
 NB you **must** include a file called **pops.csv** with header columns: **samps** and **population**. The **population** column should consider variable #23 `LDtypes`. For example, in our data we have indica samples from two panels. They are coded as "IND_IRRI" or "IND_RGD" - we can use `LDtypes=IND` to search for both (Please ensure the term does not feature in any sample names)
 
