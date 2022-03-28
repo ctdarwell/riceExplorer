@@ -1,0 +1,49 @@
+fldr=irri200	#[1]
+genes=msu_ver7_simple.csv	#[2]
+paths=rgdSampPaths.csv	#[3]
+samps=irri200_GL_paths.csv	#[4]
+data=irri200_GL_data.csv	#[5]
+accs=Rice_accession_full_list.csv	#[6]
+idd_genes=msu_GL.csv	#[7]
+all_msu=msu_ver7_simple.csv	#[8]
+gene_id=LOC_Os	#[9]
+db_id=IRIS	#[10]
+focal_id=W_OS_	#[11]
+fig1="RD_variety,Landrace"	#[12]
+fig2="RGD_improved_line"	#[13]
+db=Oryza_sativa	#[14]
+chrom=1	#[15]
+loc_col=2	#[16]
+first=4	#[17]
+end=5	#[18]
+nChroms=12	#[19]
+thresh=1	#[20]
+font1=FreeSansBold.ttf	#[21]
+font2=FreeSans.ttf	#[22]
+LDtypes=IND	#[23]
+
+
+
+## 1. work folder [to be created]
+## 2. Examined gene list - FORMAT FOLLOWS MSU (NB msu_ver7_simple.csv is a simplified version of annotated genes from MSU)
+## 3. file containing paths to gvcf files of local panel being investigated (eg RGD panel)
+## 4. paths to IRRI gvcf files
+## 5. trait data for samps
+## 6. Local samples list (MUST have columns "acc", AND "type" e.g. 'RGD improved line' vs. 'Landrace')
+## 7. List of known genes of interest affecting phenotype (with NO header); 'idd_genes=NA' if no information available 
+## 8. must follow format of [2] and MUST include genes in [7]; NB can be same file as [2]
+## 9. prefix of annotated genes (this is LOC from MSU); NB please READ GitHub notes
+## 10. prefices of sample names in database gvcf files (ALL samples must start with same prefix) 
+## 11. prefices of local samples in gvcf files (ALL samples must start with same prefix) 
+## 12. Names of Non-focal variety (NFVs) types - IMPORTANT: use commas between types and replace spaces within type names with an underscore '_'
+## 13. Names of Elite Cultivar (ECs) types - IMPORTANT: use commas between types and replace spaces within type names with an underscore '_'
+## 14. Name of snpEff database for organism
+## 15. Chromosomes column number in [2]
+## 16. Annotated gene names column number in [2]
+## 17. Column number of first base (start) positions in [2]
+## 18. Column number of end base positions in [2]
+## 19. No. of chromosomes for the organism
+## 20. Value of extreme phenotypic traits (NB Two input options: 1. A percentile/significance value - thresh=1 gives 1% confidence intervals, thresh=5 gives 5%; 2. lower and upper absolute values SEPERATED by a comma - e.g. a lower value of 7 and upper value 10 should be written as: thresh=7,10)  
+## 21. Header font - on HPC look in directory '/usr/share/fonts/' for available fonts
+## 22. Marker font - NB I like arialbd.ttf & arial.ttf
+## 23. LDtypes #INDICA!!!!!!!!!!!!!!!!!!!!!!
