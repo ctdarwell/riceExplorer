@@ -28,7 +28,7 @@ The program must first evaluate the genomic variation encoded within downloaded 
 
 ADDITIONAL: it should be noted that running steps 2-5 on a local panel (i.e. of research samples) can highlight SNPs haplotypes associating with extreme phenotypes without comparing them against a 2nd panel (this may also be useful)
 
-**Variable values required for *riceExplorer_VARS.txt***. While care must be taken for the program to run, this is all straightforward, non-technical information.
+**Variable values required for *riceExplorer_vars***. While care must be taken for the program to run, this is all straightforward, non-technical information.
 
 1. VARIABLE: `fldr` - input a folder name that will be created by the program to output results and conduct analyses
 2. VARIABLE: `genes` - name of file containing names of all genes (gene regions) to be investigated including columns indicating chromosome numbers, gene annotation names, start and end base positions to be examined. **NB** remove column headers [see "msu_115testGenes.csv" in *dataFiles.zip*]
