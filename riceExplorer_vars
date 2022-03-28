@@ -1,9 +1,9 @@
 fldr=irri200	#[1]
-genes=msu_ver7_simple.csv	#[2]
+genes=msu_115testGenes.csv	#[2]
 paths=rgdSampPaths.csv	#[3]
 samps=irri200_GL_paths.csv	#[4]
 data=irri200_GL_data.csv	#[5]
-accs=Rice_accession_full_list.csv	#[6]
+accs=Rice_accession_ecotypes.csv	#[6]
 idd_genes=msu_GL.csv	#[7]
 all_msu=msu_ver7_simple.csv	#[8]
 gene_id=LOC_Os	#[9]
@@ -46,4 +46,4 @@ LDtypes=IND	#[23]
 ## 20. Value of extreme phenotypic traits (NB Two input options: 1. A percentile/significance value - thresh=1 gives 1% confidence intervals, thresh=5 gives 5%; 2. lower and upper absolute values SEPERATED by a comma - e.g. a lower value of 7 and upper value 10 should be written as: thresh=7,10)  
 ## 21. Header font - on HPC look in directory '/usr/share/fonts/' for available fonts
 ## 22. Marker font - NB I like arialbd.ttf & arial.ttf
-## 23. LDtypes #INDICA!!!!!!!!!!!!!!!!!!!!!!
+## 23. LDtypes #INDICA a search term to identify certain samples in the "pops.csv" file
