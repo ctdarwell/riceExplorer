@@ -7,9 +7,12 @@ This is a Linux/Bash workflow to to identify haplotype reservoirs among a genomi
 
 **Dependencies**
 
-This resource comprises several Python3 (tested on Python3.7) programs that integrate via a ***Bash*** script with freely-available bioinformatics software in the public domain. In order to run it must be able to call both the **Bcftools** (https://samtools.github.io/bcftools/) and **snpEff** (http://pcingola.github.io/SnpEff/) program suites in a Linux environment. Additionally, you must set several parameters (data file names and other details) at the start of the Bash script so that the program may proceed.
+This resource comprises several Python3 (tested on Python3.7) programs that integrate via a ***Bash*** script with freely-available bioinformatics software in the public domain. In order to run it must be able to call both the **Bcftools** (https://samtools.github.io/bcftools/) and **snpEff** (http://pcingola.github.io/SnpEff/) program suites in a Linux environment. Additionally, you must set several parameters (data file names and other details) in the `riceExplorer_vars` text file so that the program may proceed.
+
 PYTHON libraries required: pandas, numpy, PIL, scipy, seaborn, matplotlib, cv2 (normally: `pip install <library> --user`) on your HPC terminal
+
 OPTIONALLY (though recommended) you must utilise R (normally found on HPC distributions). R libraries **LDheatmap** and **snpStats** must be installed.
+
 OPTIONALLY you may download and install the software sNMF (http://membres-timc.imag.fr/Olivier.Francois/snmf/contact.htm) in you work folder for the full program to work although the pipeline will still perform phylogenetic, LD and site-frequency analyses without it.
 
 **Preliminary setup**
