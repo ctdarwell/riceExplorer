@@ -10,8 +10,6 @@ when incrementally merging clusters from n (i.e. all values) to one (i.e. a sing
 Excessive merging costs are disqualified and the value of K+1 is taken to represent K
 '''
 
-sys.argv = ['', 'irri200.allChroms.fas', '.', '.']
-
 fas = sys.argv[1] #fasta file
 indir, outdir = sys.argv[2], sys.argv[3] 
 max_workers = None #nProcesses - leave as default on HPC [ie None]; set as no. processors on your machine -1 for laptops/Desktops 
