@@ -15,9 +15,7 @@ head -n 25 riceExplorer_vars >> rx_$fldr-$stamp.txt
 echo   >> rx_$fldr-$stamp.txt
 echo STATUS:   >> rx_$fldr-$stamp.txt
 
-
 #PUT ''' BELOW TO PART RUN WORFLOW
-
 
 
 ### *** START OF WORKFLOW ***
