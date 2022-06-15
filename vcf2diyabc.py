@@ -1,7 +1,7 @@
 import pandas as pd, sys, numpy as np
 
 vfile =  sys.argv[1]
-indir, outdir = sys.argv[2], sys.argv[3] #!!!!!!!!!!!!!!!!!!!!!!!!!!!outdir
+indir, outdir = sys.argv[2], sys.argv[3]
 pops = pd.read_csv(f"{sys.argv[2]}/{sys.argv[4]}", header=0) #samps, pops
 
 #find start of VCF
